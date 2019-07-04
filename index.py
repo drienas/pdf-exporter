@@ -14,11 +14,11 @@ from xformats import format_data as fd, to_csv, to_excel, file_outputter
 
 
 # CONFIG
-DEBUGMODE = True
+DEBUGMODE = False
 HOST = '0.0.0.0'
-PORT = 3103
+PORT = 5002
 EXPORT_FILE_SAVE_DIR = '\\\\172.17.89.196\\webseite$\\Dokumente\\PDVExportTmp\\'
-LOCALHOST = 'http://localhost'
+LOCALHOST = 'http://jobrouter4'
 
 
 # Create New File Outputter
