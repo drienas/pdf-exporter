@@ -9,16 +9,19 @@ by Daniel Rienas, July 2019+
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 
+
 # Import my Own Libraries
 from xformats import format_data as fd, to_csv, to_excel, file_outputter
 
+# Import ConfigFile
+from config import *
 
-# CONFIG
-DEBUGMODE = True
-HOST = '0.0.0.0'
-PORT = 3103
-EXPORT_FILE_SAVE_DIR = '\\\\172.17.89.196\\webseite$\\Dokumente\\PDVExportTmp\\'
-LOCALHOST = 'http://localhost'
+# # CONFIG
+# DEBUGMODE = True
+# HOST = '0.0.0.0'
+# PORT = 3103
+# EXPORT_FILE_SAVE_DIR = '\\\\172.17.89.196\\webseite$\\Dokumente\\PDVExportTmp\\'
+# LOCALHOST = 'http://localhost'
 
 
 # Create New File Outputter
