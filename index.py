@@ -11,7 +11,7 @@ from flask_cors import CORS
 
 
 # Import my Own Libraries
-from xformats import format_data as fd, to_csv, to_excel, file_outputter
+from xformats import format_data as fd, to_csv, to_excel, to_pdf, file_outputter
 
 # Import ConfigFile
 from config import *
@@ -33,6 +33,12 @@ def csv():
 @app.route('/xlsx', methods=['POST'])
 def xlsx():
     url = to_excel(request.json, fop)
+    return jsonify({'success': True, 'uri': url})
+
+
+@app.route('/pdf', methods=['POST'])
+def pdf():
+    url = to_pdf(request.json, fop)
     return jsonify({'success': True, 'uri': url})
 
 
