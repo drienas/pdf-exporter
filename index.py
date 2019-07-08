@@ -16,13 +16,6 @@ from xformats import format_data as fd, to_csv, to_excel, file_outputter
 # Import ConfigFile
 from config import *
 
-# # CONFIG
-# DEBUGMODE = True
-# HOST = '0.0.0.0'
-# PORT = 3103
-# EXPORT_FILE_SAVE_DIR = '\\\\172.17.89.196\\webseite$\\Dokumente\\PDVExportTmp\\'
-# LOCALHOST = 'http://localhost'
-
 
 # Create New File Outputter
 fop = file_outputter(EXPORT_FILE_SAVE_DIR, (LOCALHOST, PORT))
