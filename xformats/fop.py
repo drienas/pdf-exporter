@@ -7,7 +7,7 @@ im Jobrouter als CSV, XLSX, PDF
 by Daniel Rienas, July 2019+
 """
 import time
-import random
+from datetime import datetime
 
 
 class file_outputter:
@@ -23,4 +23,4 @@ class file_outputter:
         return filename, fileurl
 
     def get_name(self):
-        return f"{int(time.time())}-{random.randint(0,9)}"
+        return f"{datetime.fromtimestamp(time.time()).strftime('%Y%m%d%H%M%S-%f')}"

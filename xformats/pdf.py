@@ -7,18 +7,20 @@ im Jobrouter als CSV, XLSX, PDF
 by Daniel Rienas, July 2019+
 """
 from .dataformat import format_data as fd
+import numpy as np
 import pdfkit as pdf
 import os
 import time
 import random
 import datetime
 
-#    width: 640px;
-#  color: #333;
-
 
 def export_to_pdf(data, fop):
     data = fd(data)
+
+    data.replace('Nein', np.nan, inplace=True)
+    data.replace('Ja', '\u2714', inplace=True)
+
     fn, url = fop.generate_new_filename('pdf')
 
     style = """
@@ -66,5 +68,6 @@ def export_to_pdf(data, fop):
     table_html = data.to_html(index=False, na_rep='', justify='center')
 
     table_html = header_html + table_html + footer_html
-    pdf.from_string(table_html, fn, options={'orientation': 'Landscape'})
+    pdf.from_string(table_html, fn, options={
+                    'orientation': 'Landscape', 'page-size': 'A3'})
     return url
