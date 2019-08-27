@@ -16,32 +16,36 @@ import datetime
 
 
 def export_to_pdf(data, fop):
-    data = fd(data)
 
+
+    titleString = ''
+    if 'title' in data:
+            titleString = f" - {data['title']}"
+    data = fd(data)
     data.replace('Nein', np.nan, inplace=True)
     data.replace('Ja', '\u2714', inplace=True)
 
     fn, url = fop.generate_new_filename('pdf')
 
     style = """
-    table, h3 {  
-   
-    font-family: Helvetica, Arial, sans-serif; 
+    table, h3 {
 
-    border-collapse: 
-    collapse; border-spacing: 0; 
+    font-family: Helvetica, Arial, sans-serif;
+
+    border-collapse:
+    collapse; border-spacing: 0;
     }
 
-    td, th { border: 1px solid #CCC; height: 30px; } 
+    td, th { border: 1px solid #CCC; height: 30px; }
 
-    th {  
-        background: #F3F3F3; 
-        font-weight: bold; 
+    th {
+        background: #F3F3F3;
+        font-weight: bold;
     }
 
-    td {  
-    
-        text-align: center; 
+    td {
+
+        text-align: center;
     }
     """
 
@@ -52,13 +56,13 @@ def export_to_pdf(data, fop):
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>PDF Export vom """ + datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S') + """ Uhr</title>
+    <title>PDF Export vom """ + datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S') + """ Uhr """ + titleString + """</title>
     <style>
     """ + style + """
     </style>
     </head>
     <body>
-    <h3>PDF Export vom """ + datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S') + """ Uhr</h3>
+    <h3>PDF Export vom """ + datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S') + """ Uhr """ + titleString + """</h3>
     """
 
     footer_html = """

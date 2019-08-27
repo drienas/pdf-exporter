@@ -15,6 +15,13 @@ def format_data(data):
     df = df[data['keep']]
     df.rename(columns=data['cols'], inplace=True)
     df.replace([None], np.nan, inplace=True)
-    df.replace(False, 'Nein', inplace=True)
-    df.replace(True, 'Ja', inplace=True)
+    # df.replace(False, 'Nein', inplace=True)
+    # df.replace(True, 'Ja', inplace=True)
+    print(df.head())
+    booleandf = df.select_dtypes(include=[bool])
+    booleanDictionary = {True: 'Ja', False: 'Nein'}
+    for column in booleandf:
+        df[column] = df[column].map(booleanDictionary)
+    # df.replace({True:'Ja',False:'Nein'}, inplace=True)
+    print(df.head())
     return df
