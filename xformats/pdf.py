@@ -20,6 +20,7 @@ def export_to_pdf(data, fop):
 
     titleString = ''
     if 'title' in data:
+            print(data['title'])
             titleString = f" - {data['title']}"
     data = fd(data)
     data.replace('Nein', np.nan, inplace=True)

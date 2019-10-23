@@ -13,15 +13,13 @@ import numpy as np
 def format_data(data):
     df = pd.DataFrame(data["rows"])
     df = df[data['keep']]
+    if 'sort' in data:
+        data['sort'] = list(map(lambda x: str(x), data['sort']))
+        df = df[data['sort']]
     df.rename(columns=data['cols'], inplace=True)
     df.replace([None], np.nan, inplace=True)
-    # df.replace(False, 'Nein', inplace=True)
-    # df.replace(True, 'Ja', inplace=True)
-    print(df.head())
     booleandf = df.select_dtypes(include=[bool])
     booleanDictionary = {True: 'Ja', False: 'Nein'}
     for column in booleandf:
         df[column] = df[column].map(booleanDictionary)
-    # df.replace({True:'Ja',False:'Nein'}, inplace=True)
-    print(df.head())
     return df
