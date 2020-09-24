@@ -9,7 +9,6 @@ by Daniel Rienas, July 2019+
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 
-
 # Import my Own Libraries
 from xformats import format_data as fd, to_csv, to_excel, to_pdf, to_mexcel, file_outputter
 

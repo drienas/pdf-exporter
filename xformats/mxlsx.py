@@ -17,7 +17,6 @@ def export_to_mexcel(data, fop):
 
     fn, url = fop.generate_new_filename('xlsx')
     writer = pd.ExcelWriter(fn, engine='xlsxwriter')
-
     for d in data:
         xdata = {
             "rows": d['rawData'],

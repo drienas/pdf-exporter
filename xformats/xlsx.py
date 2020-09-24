@@ -17,7 +17,6 @@ def export_to_excel(data, fop):
     data = fd(data)
     fn, url = fop.generate_new_filename('xlsx')
     writer = pd.ExcelWriter(fn, engine='xlsxwriter')
-    # data.to_excel(writer, sheet_name='Export1', index=False)
     if 'sort' in rdata:
         data.to_excel(writer, sheet_name='Export1',
                       index=False, startrow=2, header=False)

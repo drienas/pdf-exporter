@@ -74,5 +74,7 @@ def export_to_pdf(data, fop):
 
     table_html = header_html + table_html + footer_html
     pdf.from_string(table_html, fn, options={
-                    'orientation': 'Landscape', 'page-size': 'A3'})
+                    'orientation': 'Landscape',
+                    'page-size': 'A3'
+                    })
     return url
