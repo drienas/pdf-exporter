@@ -1,4 +1,4 @@
 Flask==1.0.3
-Flask_Cors==3.0.8
-pandas==0.24.2
-openpyxl==2.6.2
+Flask-Cors==3.0.8
+pdfkit==0.6.1
+XlsxWriter==1.2.1

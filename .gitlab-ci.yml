@@ -1,0 +1,19 @@
+stages:
+  - build
+  - deploy
+  - cleanup
+
+build:
+  stage: build
+  script:
+    - docker build -t 172.17.89.230:5000/pyexporter .
+
+deploy:
+  stage: deploy
+  script:
+    - docker push 172.17.89.230:5000/pyexporter
+
+cleanup:
+  stage: cleanup
+  script:
+    - docker image rm 172.17.89.230:5000/pyexporter
