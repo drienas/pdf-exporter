@@ -19,7 +19,7 @@ class file_outputter:
     def generate_new_filename(self, xt):
         fn = self.get_name()
         filename = f"{self.savedir}{fn}.{xt}"
-        fileurl = f"{self.host}:{self.port}/files/{fn}.{xt}"
+        fileurl = f"{self.host}/files/{fn}.{xt}"
         return filename, fileurl
 
     def get_name(self):
