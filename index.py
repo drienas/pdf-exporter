@@ -23,30 +23,31 @@ app = Flask(__name__)
 CORS(app)
 
 
-@app.route('/csv', methods=['POST'])
+@app.route('/fex/csv', methods=['POST'])
 def csv():
     url = to_csv(request.json, fop)
     return jsonify({'success': True, 'uri': url})
 
 
-@app.route('/xlsx', methods=['POST'])
+@app.route('/fex/xlsx', methods=['POST'])
 def xlsx():
     url = to_excel(request.json, fop)
     return jsonify({'success': True, 'uri': url})
 
 
-@app.route('/pdf', methods=['POST'])
+@app.route('/fex/pdf', methods=['POST'])
 def pdf():
     url = to_pdf(request.json, fop)
     return jsonify({'success': True, 'uri': url})
 
-@app.route('/mxlsx', methods=['POST'])
+
+@app.route('/fex/mxlsx', methods=['POST'])
 def mxlsx():
     url = to_mexcel(request.json, fop)
     return jsonify({'success': True, 'uri': url})
 
 
-@app.route('/files/<path:filename>')
+@app.route('/fex/files/<path:filename>')
 def get(filename):
     return send_from_directory(EXPORT_FILE_SAVE_DIR, filename)
 
