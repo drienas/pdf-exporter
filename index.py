@@ -10,7 +10,7 @@ from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 
 # Import my Own Libraries
-from xformats import format_data as fd, to_csv, to_excel, to_pdf, to_mexcel, file_outputter
+from xformats import format_data as fd, to_csv, to_excel, to_pdf, to_mexcel, html_to_pdf, file_outputter
 
 # Import ConfigFile
 from config import *
@@ -38,6 +38,12 @@ def xlsx():
 @app.route('/fex/pdf', methods=['POST'])
 def pdf():
     url = to_pdf(request.json, fop)
+    return jsonify({'success': True, 'uri': url})
+
+
+@app.route('/fex/htmltopdf', methods=['POST'])
+def htmltopdf():
+    url = html_to_pdf(request.json, fop)
     return jsonify({'success': True, 'uri': url})
 
 
